@@ -1,5 +1,3 @@
-import { language } from "ionicons/icons"
-
 export type Date = [number, number, number]
 export type Title = Record<string, string>
 type Location = { id?: string, name?: string }

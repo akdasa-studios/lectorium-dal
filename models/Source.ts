@@ -11,7 +11,7 @@ export type SourceName = {
 }
 
 
-export type Reference = string[]
+export type Reference = (string | number)[]
 
 export class Source {
   constructor(

@@ -1,8 +1,6 @@
 import PouchDB from 'pouchdb'
-import PouchDBAdapterSqlLite from 'pouchdb-adapter-cordova-sqlite'
 import PouchDBFind from 'pouchdb-find'
 
-PouchDB.plugin(PouchDBAdapterSqlLite)
 PouchDB.plugin(PouchDBFind)
 
 export interface DatabaseConfig {
@@ -58,6 +56,13 @@ export class Database {
           docs: info.docs
         })
       })
+  }
+
+  async sync(
+    remote: Database,
+    options?: DatabaseReplicationOptions,
+  ) {
+    await this._db.sync(remote.db, options)
   }
 
   /**
