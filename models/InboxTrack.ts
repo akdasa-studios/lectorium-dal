@@ -1,6 +1,6 @@
 
 export type DocumentId = string;
-export type Reference = Array<string | number>;
+type Reference = Array<string | number>;
 
 export type NormalizedValue<
   TNormalizedType,
