@@ -19,5 +19,7 @@ export type InboxTrack = {
   location: NormalizedValue<DocumentId>
   references: NormalizedValue<Reference>[]
   date: NormalizedValue<number[]>
-  status: "ready" | "processing" | "error"
+  status: "new" | "ready" | "processing" | "error",
+  extract_languages: string[],
+  translate_into: string[],
 }

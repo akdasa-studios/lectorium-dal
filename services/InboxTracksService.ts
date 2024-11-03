@@ -13,23 +13,14 @@ type InboxTrackDbScheme = {
   location: NormalizedValue<DocumentId>
   references: NormalizedValue<Reference>[]
   date: NormalizedValue<number[]>
-  status: "ready" | "processing" | "error"
+  status: "new" | "ready" | "processing" | "error",
+  extract_languages: string[],
+  translate_into: string[],
 }
 
 
 const inboxTrackSerializer   = (item: InboxTrack): InboxTrackDbScheme => item
 const inboxTrackDeserializer = (document: InboxTrackDbScheme): InboxTrack => document
-//   ({
-//   _id: document._id,
-//   trackId: document.trackId,
-//   source: document.source,
-//   title: document.title,
-//   author: document.author,
-//   location: document.location,
-//   references: document.references,
-//   date: document.date.normalized ? document.date : { original: "RAE", normalized: [undefined, undefined, undefined] },
-//   status: document.status,
-// })
 
 
 export class InboxTracksService {
