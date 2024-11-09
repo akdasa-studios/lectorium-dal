@@ -1,6 +1,6 @@
 import { type DocumentId, type InboxTrack, type NormalizedValue, type Reference } from '../models'
 import { Database } from '../persistence'
-import { DatabaseService } from './DatabaseService'
+import { DatabaseService, type GetManyRequest } from './DatabaseService'
 
 
 
@@ -67,6 +67,12 @@ export class InboxTracksService {
     item: InboxTrack
   ) {
     await this._databaseService.updateOne(id, item)
+  }
+
+  public async getMany(
+    request: GetManyRequest
+  ) {
+    return await this._databaseService.getMany(request)
   }
 
 }

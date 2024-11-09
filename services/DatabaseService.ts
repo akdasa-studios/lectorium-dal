@@ -99,17 +99,13 @@ export class DatabaseService<
     request: GetManyRequest
   ): Promise<TItem[]> {
     const dbRequest: any = {}
+    if (request?.selector) { dbRequest.selector = request.selector }
     if (request?.limit) { dbRequest.limit = request.limit }
     if (request?.skip)  { dbRequest.skip = request.skip }
 
-    const entities = await this._database.db.find({
-      selector: request.selector,
-      limit: request.limit,
-      skip: request.skip,
-    })
+    const entities = await this._database.db.find(dbRequest)
 
     return entities.docs
-      // .filter(x => "id" in x)
       // @ts-ignore
       .map(doc => this._deserializer(doc))
   }
